@@ -30,8 +30,6 @@ public class MemoryView {
     private JPanel cardPanel;
     private JPanel botPanel;
     
-    private JLabel timer;
-    private JLabel highScore;
     private JLabel moves;
     
     private JButton newGame;
@@ -64,8 +62,6 @@ public class MemoryView {
         cardPanel = new JPanel();
         botPanel = new JPanel();
         
-        timer = new JLabel();
-        highScore = new JLabel();
         moves = new JLabel();
         
         newGame = new JButton();
@@ -78,18 +74,6 @@ public class MemoryView {
         //botPanel stuff
         botPanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         
-        //TODO
-        //Change from labels to actual things
-        timer.setText("TIMER");
-        timer.setBackground(Color.white);
-        timer.setOpaque(true);
-        timer.setPreferredSize(dimension);
-        
-        highScore.setText("HIGH SCORE");
-        highScore.setBackground(Color.white);
-        highScore.setOpaque(true);
-        highScore.setPreferredSize(dimension);
-        
         moves.setText("MOVES: 0");
         moves.setBackground(Color.white);
         moves.setOpaque(true);
@@ -101,8 +85,6 @@ public class MemoryView {
         newGame.setPreferredSize(dimension);
         
         botPanel.setLayout(new FlowLayout());
-        botPanel.add(timer);
-        botPanel.add(highScore);
         botPanel.add(moves);
         botPanel.add(newGame);
 
