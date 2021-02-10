@@ -75,8 +75,6 @@ public class MemoryView {
         botPanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         
         moves.setText("MOVES: 0");
-        moves.setBackground(Color.white);
-        moves.setOpaque(true);
         moves.setPreferredSize(dimension);
         
         newGame.setText("NEW GAME");
@@ -87,6 +85,7 @@ public class MemoryView {
         botPanel.setLayout(new FlowLayout());
         botPanel.add(moves);
         botPanel.add(newGame);
+        botPanel.setBackground(Color.lightGray);
 
         //cardPanelstuff      
         cardPanel.setLayout(new GridLayout(4,4));
@@ -178,6 +177,8 @@ public class MemoryView {
                 break;
         }
         
+        card.setText(null);
+        
         if(comparing == 0){
             first = card;
             firstRow = row;
@@ -192,25 +193,29 @@ public class MemoryView {
             
             second.setBackground(cardColour);
         }
-        
+                
         comparing++;
-        
+                
         //if two "cards" are "selected"
         if(comparing == 2){
             moveCount++;
             
+            //the cards match
             if(model.getCard(firstRow, firstCol) == model.getCard(seconRow, seconCol) && first != second){
                 matches++;
                 first.setEnabled(false);
                 second.setEnabled(false);
             }
+            //the cards don't match
             else{
                 JOptionPane.showMessageDialog(frame, "No match there.");
-                
+                                
                 first.setBackground(Color.gray);
-                second.setBackground(Color.gray);
+                first.setText("card");
                 first.setBorder(BorderFactory.createLineBorder(Color.black, 2));
                 second.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+                second.setBackground(Color.gray);
+                second.setText("card");
             }
          
             comparing = 0;
@@ -218,7 +223,6 @@ public class MemoryView {
         
         if(matches == 8){
             JOptionPane.showMessageDialog(frame, "You did it!");
-            newGame();
         }
     }
     
